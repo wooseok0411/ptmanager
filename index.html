@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PT 회원 관리 키트</title>
+<meta name="description" content="상담 설문부터 운동일지까지, 휴대폰 하나로 끝내는 트레이너용 회원 관리 앱">
+<!-- 카카오톡·문자 링크 미리보기 (주소는 GitHub Pages에 올린 뒤 채움) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="PT 회원 관리 키트">
+<meta property="og:description" content="상담 설문부터 운동일지까지, 휴대폰 하나로 끝내는 트레이너용 회원 관리 앱">
+<meta property="og:image" content="https://wooseok0411.github.io/ptmanager/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://wooseok0411.github.io/ptmanager/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0f6b5c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f3ec; --card: #ffffff; --ink: #1f2124; --muted: #5f6368; --line: #e4ded2;
+    --accent: #0f6b5c; --accent-soft: #e3f1ed; --on-accent: #ffffff; --warm: #c98a4b; --warm-soft: #f3e6d6;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 6px 20px rgba(60,45,20,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f;
+      --accent: #5fc7b1; --accent-soft: #1f3a34; --on-accent: #0e1f1b; --warm: #e0a868; --warm-soft: #3a2f22;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f;
+    --accent: #5fc7b1; --accent-soft: #1f3a34; --on-accent: #0e1f1b; --warm: #e0a868; --warm-soft: #3a2f22;
+    --shadow: none;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Noto Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  a { color: inherit; }
+
+  /* 히어로 */
+  .hero { padding: 28px 0 8px; text-align: center; }
+  .hero .pill { display: inline-block; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 14px; padding: 5px 14px; border-radius: 999px; }
+  .hero img { display: block; width: min(420px, 92%); height: auto; margin: 6px auto -10px; }
+  .hero h1 { font-size: clamp(34px, 9vw, 52px); line-height: 1.15; margin: 0; letter-spacing: -.03em; font-weight: 900; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 17px; margin: 12px 0 22px; }
+  .cta { display: grid; gap: 10px; max-width: 420px; margin: 0 auto; }
+  .btn { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; border-radius: 16px; font-weight: 700; font-size: 17px; text-decoration: none; border: 0; cursor: pointer; }
+  .btn.primary { background: var(--accent); color: var(--on-accent); }
+  .btn.ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+  .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+  .small { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  /* 섹션 */
+  section { padding: 36px 0 4px; }
+  h2 { font-size: 24px; letter-spacing: -.02em; margin: 0 0 4px; }
+  .lead { color: var(--muted); margin: 0 0 18px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  @media (min-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .card { background: var(--card); border-radius: 18px; padding: 16px 18px; box-shadow: var(--shadow); border: 1px solid var(--line); }
+  .feat { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+  .feat .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--warm-soft); display: grid; place-items: center; font-size: 22px; }
+  .feat b { display: block; font-size: 16px; }
+  .feat p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+  .trust { background: var(--accent-soft); border: 0; }
+  .trust .ic { background: var(--card); }
+  .trust b { color: var(--accent); }
+
+  ol.steps { list-style: none; padding: 0; margin: 0; counter-reset: s; display: grid; gap: 10px; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+  ol.steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-weight: 700; display: grid; place-items: center; }
+  ol.steps b { display: block; }
+  ol.steps span { color: var(--muted); font-size: 14px; }
+
+  details.faq { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 0 18px; margin-bottom: 8px; }
+  details.faq summary { list-style: none; cursor: pointer; padding: 15px 0; font-weight: 700; display: flex; justify-content: space-between; gap: 10px; }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after { content: "＋"; color: var(--muted); font-weight: 400; }
+  details.faq[open] summary::after { content: "－"; }
+  details.faq p { margin: 0 0 15px; color: var(--muted); font-size: 15px; }
+
+  .contact { text-align: center; padding: 40px 0 28px; }
+  .contact .card { padding: 22px 18px; }
+  .contact .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 8px 0 40px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <span class="pill">트레이너용 회원 관리 앱</span>
+    <img src="character.png" alt="팔 근육을 뽐내는 감자 캐릭터" width="512" height="512">
+    <h1>PT 회원 관리 <span>키트</span></h1>
+    <p>상담 설문부터 운동일지까지,<br>휴대폰 하나로 끝내요.</p>
+    <div class="cta">
+      <a class="btn primary" id="open-app" href="__APP_URL__" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
+      <a class="btn ghost" href="#contact">구매 문의</a>
+    </div>
+    <div class="small">이미 구매하셨다면 라이선스 코드를 준비해 주세요.</div>
+  </header>
+
+  <section>
+    <h2>이런 일이 편해져요</h2>
+    <p class="lead">종이 상담지, 메모장, 카톡 복붙을 앱 하나로 정리했어요.</p>
+    <div class="grid">
+      <div class="card feat"><div class="ic">📝</div><div><b>사전 상담 설문 자동 등록</b><p>설문 링크만 보내면, 제출한 회원이 앱 목록에 바로 올라와요. 알림 메일도 와요.</p></div></div>
+      <div class="card feat"><div class="ic">⚠️</div><div><b>건강 확인이 필요한 회원 표시</b><p>질환·통증을 체크한 회원은 눈에 띄게 표시돼요. 면담 후 확인 완료로 정리해요.</p></div></div>
+      <div class="card feat"><div class="ic">🍚</div><div><b>칼로리·단백질 자동 계산</b><p>키·체중·활동량·목표로 권장 섭취 칼로리와 단백질 목표를 바로 보여줘요.</p></div></div>
+      <div class="card feat"><div class="ic">🏋️</div><div><b>회차별 프로그램 + 추천 운동</b><p>부위를 고르면 대표 운동이 떠요. 눌러서 넣고, 자주 쓰는 운동은 직접 추가해요.</p></div></div>
+      <div class="card feat"><div class="ic">📒</div><div><b>운동일지</b><p>다음 회차 프로그램이 자동으로 채워져요. 실제로 한 대로 고쳐서 저장하면 끝.</p></div></div>
+      <div class="card feat"><div class="ic">💬</div><div><b>회원에게 카톡으로 보내기</b><p>처방 목표, 프로그램, 운동일지, 식단 가이드를 골라서 메시지로 바로 보내요.</p></div></div>
+    </div>
+    <div class="card feat trust" style="margin-top:10px"><div class="ic">🔒</div><div><b>회원 정보는 내 구글 계정에만</b><p>설문지와 회원 시트가 트레이너 본인 구글 계정에 만들어져요. 판매자는 회원 정보를 볼 수 없어요.</p></div></div>
+  </section>
+
+  <section id="install">
+    <h2>설치 방법</h2>
+    <p class="lead">휴대폰만 있으면 5분이면 끝나요.</p>
+    <div class="card">
+      <ol class="steps">
+        <li><div><b>라이선스 코드 받기</b><span>구매하시면 <code>PT-XXXX-XXXX</code> 형태의 코드를 보내드려요.</span></div></li>
+        <li><div><b>위의 [앱 열기 · 설치하기] 누르기</b><span>구글 계정으로 로그인해요. 처음이라면 forms.google.com을 한 번 열어 두면 좋아요.</span></div></li>
+        <li><div><b>구글 권한 허용</b><span>"확인되지 않은 앱" 창이 뜨면 고급 → (안전하지 않음)으로 이동 → 허용을 눌러요.</span></div></li>
+        <li><div><b>코드·이름·센터 입력 후 [설치하기]</b><span>내 계정에 설문지와 회원 시트가 자동으로 만들어져요.</span></div></li>
+        <li><div><b>홈 화면에 추가</b><span>브라우저 메뉴 → 홈 화면에 추가를 누르면 앱처럼 쓸 수 있어요.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>자주 묻는 질문</h2>
+    <details class="faq"><summary>컴퓨터 없이 휴대폰만으로 되나요?</summary><p>네. 설치부터 회원 관리, 설문 문항 수정까지 모두 휴대폰에서 할 수 있어요.</p></details>
+    <details class="faq"><summary>매달 내는 비용이 있나요?</summary><p>무료 구글 계정만 있으면 돼요. 앱을 쓰는 데 따로 드는 월 사용료는 없어요.</p></details>
+    <details class="faq"><summary>설문 문항을 바꿀 수 있나요?</summary><p>앱의 [설문] 탭에서 문항 제목·선택지를 고치거나 새 문항을 추가할 수 있어요. 계산에 쓰이는 기본 문항만 삭제가 막혀 있어요.</p></details>
+    <details class="faq"><summary>기존 회원도 넣을 수 있나요?</summary><p>설문 링크로 기본 정보를 짧게 제출한 뒤, 앱에서 [수정하기]로 나머지를 채우면 돼요.</p></details>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="card">
+      <h2>구매·설치 문의</h2>
+      <p class="lead" style="margin:4px 0 0">설치가 어렵다면 세팅도 도와드려요.</p>
+      <div class="row">
+        <a class="btn primary" href="tel:01027916133">📞 전화</a>
+        <a class="btn ghost" href="sms:01027916133">💬 문자</a>
+      </div>
+      <div class="small">010-2791-6133</div>
+    </div>
+  </section>
+
+</main>
+<footer>PT 회원 관리 키트 · 체육 전공 트레이너가 직접 만들었어요</footer>
+<script>
+  // 앱 주소가 아직 비어 있으면 버튼을 잠시 막아둠
+  (function () {
+    var a = document.getElementById('open-app');
+    if (a.getAttribute('href').indexOf('__') === 0) { a.setAttribute('aria-disabled', 'true'); a.textContent = '앱 주소 준비 중'; }
+  })();
+</script>
+</body>
+</html>
