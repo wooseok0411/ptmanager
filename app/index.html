@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GYMvis</title>
+<meta name="description" content="PT 매니저 GYMvis를 홈 화면에 추가하는 페이지">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="GYMvis">
+<meta name="application-name" content="GYMvis">
+<meta name="theme-color" content="#0f6b5c">
+<script>
+  // 홈 화면 아이콘으로 열면(?home=1) 바로 앱으로 이동
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec';
+  if (/[?&]home=1/.test(location.search)) location.replace(APP_URL);
+</script>
+<style>
+  :root { --bg: #f6f3ec; --card: #fff; --ink: #1f2124; --muted: #5f6368; --line: #e4ded2; --accent: #0f6b5c; --accent-soft: #e3f1ed; --on-accent: #fff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f; --accent: #5fc7b1; --accent-soft: #1f3a34; --on-accent: #0e1f1b; }
+  }
+  :root[data-theme="dark"] { --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f; --accent: #5fc7b1; --accent-soft: #1f3a34; --on-accent: #0e1f1b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; line-height: 1.6; word-break: keep-all; }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 24px 16px 40px; }
+  .ic { width: 96px; height: 96px; border-radius: 24px; display: block; margin: 8px auto 12px; box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+  h1 { text-align: center; font-size: 26px; margin: 0; letter-spacing: -.02em; }
+  h1 span { color: var(--accent); }
+  .sub { text-align: center; color: var(--muted); margin: 4px 0 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; margin-bottom: 10px; }
+  .card h2 { font-size: 16px; margin: 0 0 8px; }
+  ol { margin: 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  b.k { background: var(--accent-soft); color: var(--accent); padding: 1px 7px; border-radius: 6px; white-space: nowrap; }
+  .btn { display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 16px; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 17px; text-decoration: none; margin-top: 16px; }
+  .note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 12px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <img class="ic" src="icon-512.png" alt="GYMvis 아이콘" width="96" height="96">
+  <h1>PT 매니저 <span>GYMvis</span></h1>
+  <p class="sub">이 화면에서 홈 화면에 추가하면<br>감자 아이콘으로 저장돼요.</p>
+
+  <div class="card" id="android">
+    <h2>안드로이드 (삼성 인터넷 · 크롬)</h2>
+    <ol>
+      <li>오른쪽 아래(또는 위) <b class="k">⋮</b> / <b class="k">≡</b> 메뉴를 눌러요.</li>
+      <li><b class="k">현재 페이지 추가</b> → <b class="k">홈 화면</b>을 눌러요. 크롬은 <b class="k">홈 화면에 추가</b>예요.</li>
+      <li>이름이 <b>GYMvis</b>인지 확인하고 추가해요.</li>
+    </ol>
+  </div>
+  <div class="card" id="ios">
+    <h2>아이폰 (사파리)</h2>
+    <ol>
+      <li>아래쪽 <b class="k">공유</b> 버튼(네모에 위쪽 화살표)을 눌러요.</li>
+      <li><b class="k">홈 화면에 추가</b>를 눌러요.</li>
+      <li>이름이 <b>GYMvis</b>인지 확인하고 <b class="k">추가</b>를 눌러요.</li>
+    </ol>
+  </div>
+
+  <a class="btn" id="open" href="#">지금 바로 앱 열기</a>
+  <p class="note">홈 화면의 감자 아이콘을 누르면 이 화면을 건너뛰고 바로 앱이 열려요.</p>
+</main>
+<script>
+  document.getElementById('open').href = APP_URL;
+  // 아이폰은 '지금 주소'를 그대로 저장하므로, 주소에 ?home=1을 붙여 둠 (아이콘으로 열 때 바로 앱으로 이동)
+  try { history.replaceState(null, '', location.pathname + '?home=1'); } catch (e) {}
+  // 사용하는 기기 안내를 먼저 보여주기
+  if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+    var a = document.getElementById('android'); a.parentNode.insertBefore(document.getElementById('ios'), a);
+  }
+</script>
+</body>
+</html>

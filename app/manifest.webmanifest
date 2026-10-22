@@ -1,0 +1,14 @@
+{
+  "name": "PT 매니저 GYMvis",
+  "short_name": "GYMvis",
+  "start_url": "./?home=1",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#f6f3ec",
+  "theme_color": "#0f6b5c",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
