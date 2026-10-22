@@ -36,12 +36,14 @@
   b.k { background: var(--accent-soft); color: var(--accent); padding: 1px 7px; border-radius: 6px; white-space: nowrap; }
   .btn { display: flex; align-items: center; justify-content: center; min-height: 54px; border-radius: 16px; background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 17px; text-decoration: none; margin-top: 16px; }
   .note { color: var(--muted); font-size: 13px; text-align: center; margin-top: 12px; }
+  .done { background: var(--accent-soft); color: var(--accent); font-weight: 700; text-align: center; border-radius: 14px; padding: 10px 12px; margin: 12px 0 0; }
 </style>
 </head>
 <body>
 <main class="wrap">
   <img class="ic" src="icon-512.png" alt="GYMvis 아이콘" width="96" height="96">
   <h1>PT 매니저 <span>GYMvis</span></h1>
+  <div class="done" id="done" hidden>✅ 설치 완료! 마지막 단계예요.</div>
   <p class="sub">이 화면에서 홈 화면에 추가하면<br>감자 아이콘으로 저장돼요.</p>
 
   <div class="card" id="android">
@@ -66,6 +68,7 @@
 </main>
 <script>
   document.getElementById('open').href = APP_URL;
+  if (/[?&]from=install/.test(location.search)) document.getElementById('done').hidden = false;
   // 아이폰은 '지금 주소'를 그대로 저장하므로, 주소에 ?home=1을 붙여 둠 (아이콘으로 열 때 바로 앱으로 이동)
   try { history.replaceState(null, '', location.pathname + '?home=1'); } catch (e) {}
   // 사용하는 기기 안내를 먼저 보여주기
