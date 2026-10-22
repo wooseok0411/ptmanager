@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개인정보처리방침 · PT 매니저 GYMvis</title>
+<meta name="description" content="PT 매니저 GYMvis 개인정보처리방침 (Privacy Policy)">
+<link rel="icon" type="image/png" href="../icon.png">
+<style>
+  :root { --bg: #f6f3ec; --card: #fff; --ink: #1f2124; --muted: #5f6368; --line: #e4ded2; --accent: #0f6b5c; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f; --accent: #5fc7b1; }
+  }
+  :root[data-theme="dark"] { --bg: #1b1a17; --card: #26241f; --ink: #f1eee8; --muted: #b3ada3; --line: #3a362f; --accent: #5fc7b1; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 48px; }
+  a { color: var(--accent); }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.02em; }
+  .meta { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; margin-bottom: 10px; }
+  h2 { font-size: 18px; margin: 0 0 6px; }
+  h3 { font-size: 15px; margin: 12px 0 4px; }
+  p, li { font-size: 15px; }
+  ul { padding-left: 20px; margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0; }
+  th, td { border-top: 1px solid var(--line); padding: 8px 6px; text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; width: 34%; }
+  .en { color: var(--muted); }
+  .en p, .en li { font-size: 14px; }
+  .back { display: inline-block; margin-bottom: 16px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="../">← PT 매니저 GYMvis 소개로</a>
+  <h1>개인정보처리방침</h1>
+  <div class="meta">PT 매니저 GYMvis · 시행일 2026년 10월 22일</div>
+
+  <section>
+    <h2>1. 이 방침이 다루는 범위</h2>
+    <p>PT 매니저 GYMvis(이하 "앱")는 퍼스널 트레이너(이하 "트레이너")가 회원의 사전 상담 설문, 운동 프로그램, 운동일지를 관리하도록 돕는 Google Apps Script 기반 웹앱입니다. 이 방침은 앱이 트레이너의 Google 계정 데이터와, 트레이너가 앱으로 관리하는 회원 정보를 어떻게 다루는지 설명합니다.</p>
+    <p>운영자: 심우석 · 문의: <a href="mailto:wooseok6133@gmail.com">wooseok6133@gmail.com</a> · 010-2791-6133</p>
+  </section>
+
+  <section>
+    <h2>2. 핵심 요약</h2>
+    <ul>
+      <li>회원 정보와 설문 응답은 <b>트레이너 본인의 Google 계정</b>(Google 설문지·Google 시트)에만 저장됩니다.</li>
+      <li>운영자는 별도 서버를 운영하지 않으며, 트레이너의 회원 정보를 <b>보거나 저장하거나 받지 않습니다.</b></li>
+      <li>운영자가 보관하는 것은 <b>라이선스 코드와 그 코드를 사용한 Google 계정 이메일 주소</b>뿐입니다.</li>
+      <li>Google 사용자 데이터를 판매하거나, 광고에 쓰거나, AI 모델 학습에 쓰지 않습니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. 앱이 접근하는 Google 데이터와 사용 목적</h2>
+    <p>트레이너가 앱을 설치할 때 Google 권한 동의 화면에서 아래 접근을 허용합니다. 각 권한은 아래 목적으로만 사용합니다.</p>
+    <table>
+      <tr><th>Google 설문지 (forms)</th><td>트레이너 계정에 사전 상담 설문지를 만들고, 트레이너가 앱에서 문항을 수정하며, 제출된 응답을 읽어 회원 목록에 보여줍니다.</td></tr>
+      <tr><th>Google 시트 (spreadsheets)</th><td>트레이너 계정에 회원 시트를 만들고, 처방 목표·회차별 프로그램·운동일지·정보 수정 내용을 저장하고 읽습니다.</td></tr>
+      <tr><th>메일 보내기 (script.send_mail)</th><td>새 설문이 제출되면 트레이너가 지정한 주소로 알림 메일을 보냅니다. 다른 사람에게 메일을 보내지 않습니다.</td></tr>
+      <tr><th>트리거 관리 (script.scriptapp)</th><td>설문이 제출되면 자동으로 알림을 보내기 위한 제출 감지 기능을 트레이너 계정에 설정합니다.</td></tr>
+      <tr><th>이메일 주소 (userinfo.email)</th><td>트레이너 본인 확인, 라이선스 코드와 계정 연결, 알림 메일 기본 주소 설정에 사용합니다.</td></tr>
+    </table>
+    <p>앱은 Google Drive의 다른 파일, Gmail 받은편지함, 연락처 등 위에 적지 않은 데이터에는 접근하지 않습니다.</p>
+  </section>
+
+  <section>
+    <h2>4. 저장 위치와 보관</h2>
+    <h3>트레이너 Google 계정에 저장되는 것</h3>
+    <ul>
+      <li>사전 상담 설문지와 응답, 회원 시트(처방 목표, 회차별 프로그램, 운동일지, 정보 수정, 건강 확인, 회원 상태 탭)</li>
+      <li>앱 설정(트레이너 이름, 센터 이름, 알림 메일, 보관 기간)과 "내 운동" 목록 — Apps Script 사용자 속성</li>
+    </ul>
+    <p>이 데이터는 트레이너가 직접 관리하며, 트레이너가 Google 설문지·시트에서 언제든 수정하거나 삭제할 수 있습니다.</p>
+    <h3>운영자가 보관하는 것</h3>
+    <ul>
+      <li>라이선스 코드와, 그 코드로 설치한 Google 계정의 이메일 주소 (라이선스 중복 사용 방지 목적)</li>
+    </ul>
+    <p>라이선스 기록은 서비스 이용 기간 동안 보관하며, 삭제를 요청하면 지체 없이 삭제합니다.</p>
+  </section>
+
+  <section>
+    <h2>5. 회원(트레이너의 고객) 정보</h2>
+    <p>회원이 사전 상담 설문에 입력하는 이름, 연락처, 나이, 키·체중, 운동 목표, 건강 상태(질환·통증), 생활 습관 정보는 트레이너의 Google 설문지와 시트에 저장됩니다. 이 정보의 수집·이용 주체는 해당 트레이너이며, 설문 첫 부분에 개인정보 및 건강정보(민감정보) 수집·이용 동의 문항과 보관 기간 안내가 포함되어 있습니다. 회원은 정보의 열람·정정·삭제를 해당 트레이너에게 요청할 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>6. 제3자 제공 · 외부 전송</h2>
+    <p>앱은 Google 사용자 데이터를 제3자에게 판매·제공하지 않습니다. 트레이너가 [회원에게 보내기]를 누르면, 트레이너가 고른 내용이 트레이너 휴대폰의 공유 기능(카카오톡, 문자 등)으로 전달되며, 이 전송은 트레이너가 직접 선택하고 실행합니다.</p>
+    <p>소개 페이지는 GitHub Pages에서 제공되며, 원화 가격 표시를 위해 공개 환율 서비스(Frankfurter)에서 환율만 불러옵니다. 이 과정에서 개인정보는 전송되지 않습니다.</p>
+  </section>
+
+  <section>
+    <h2>7. Google API 사용자 데이터 정책 준수</h2>
+    <p>PT 매니저 GYMvis가 Google API로부터 받은 정보를 사용하고 다른 앱으로 전송하는 방식은 제한적 사용(Limited Use) 요구사항을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API 서비스 사용자 데이터 정책</a>을 준수합니다.</p>
+  </section>
+
+  <section>
+    <h2>8. 권한 철회와 데이터 삭제</h2>
+    <ul>
+      <li>앱 권한 철회: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google 계정 → 보안 → 타사 액세스</a>에서 PT 매니저 GYMvis의 액세스를 삭제하세요.</li>
+      <li>데이터 삭제: 트레이너 Google 드라이브에서 회원 시트와 설문지를 삭제하면 앱 데이터가 모두 지워집니다.</li>
+      <li>라이선스 기록 삭제: <a href="mailto:wooseok6133@gmail.com">wooseok6133@gmail.com</a>으로 요청하세요.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>9. 안전성 확보</h2>
+    <p>모든 데이터는 Google의 인프라(Google 설문지, 시트, Apps Script) 안에서 처리되며 HTTPS로 전송됩니다. 앱 코드는 트레이너 본인 계정 권한으로 실행되어, 다른 트레이너의 데이터에 접근할 수 없습니다.</p>
+  </section>
+
+  <section>
+    <h2>10. 방침 변경</h2>
+    <p>이 방침이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 중요한 변경은 앱 안내 또는 이메일로 알립니다.</p>
+  </section>
+
+  <section class="en">
+    <h2>Privacy Policy (English summary)</h2>
+    <p>PT Manager GYMvis is a Google Apps Script web app that helps personal trainers manage intake surveys, workout programs, and workout logs for their clients. Operator: Wooseok Sim, <a href="mailto:wooseok6133@gmail.com">wooseok6133@gmail.com</a>. Effective October 22, 2026.</p>
+    <ul>
+      <li><b>Data accessed:</b> Google Forms (create the trainer's intake form, edit its questions, read responses), Google Sheets (create and read/write the trainer's client sheet), send email (notify the trainer of new submissions at the trainer's chosen address), manage triggers (detect form submissions), and the user's email address (identify the trainer and bind the license code).</li>
+      <li><b>Storage:</b> All client data and responses are stored only in the trainer's own Google account (Forms/Sheets). Settings are stored in Apps Script user properties. The operator runs no servers and does not receive or store client data. The operator stores only license codes and the email address of the account that used each code.</li>
+      <li><b>Sharing:</b> We do not sell, transfer, or use Google user data for advertising or AI model training. Content is shared with clients only when the trainer explicitly chooses to send it via the device's share function.</li>
+      <li><b>Limited Use:</b> PT Manager GYMvis's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+      <li><b>Revocation & deletion:</b> Revoke access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>; delete the form and sheet in Google Drive to remove all app data; email us to delete license records.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
