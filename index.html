@@ -111,6 +111,14 @@
   .flow span { background: var(--card); border-radius: 999px; padding: 4px 11px; }
   .flow i { color: var(--muted); font-style: normal; }
   .flow b { background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: 4px 12px; }
+  .warn-box { background: #fdf3e4; border: 1px solid #f0d9b5; color: #6b4a1c; border-radius: 16px; padding: 14px 16px; margin-bottom: 10px; font-size: 14px; }
+  .warn-box > b { display: block; font-size: 16px; color: #8a5a12; margin-bottom: 4px; }
+  .warn-box p { margin: 4px 0; }
+  .warn-box .how { color: #7a6340; font-size: 13px; }
+  .warn-box .btn { margin-top: 10px; min-height: 46px; font-size: 15px; }
+  .warn-box .btn[hidden] { display: none; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .warn-box { background: #3a2f22; border-color: #574632; color: #ead7bb; } :root:not([data-theme="light"]) .warn-box > b { color: #f0bf7a; } :root:not([data-theme="light"]) .warn-box .how { color: #cdb894; } }
+  :root[data-theme="dark"] .warn-box { background: #3a2f22; border-color: #574632; color: #ead7bb; }
   .contact { text-align: center; padding: 40px 0 28px; }
   .contact .card { padding: 22px 18px; }
   .contact .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
@@ -202,6 +210,12 @@
   <section id="install">
     <h2>설치 방법</h2>
     <p class="lead">휴대폰만 있으면 5분이면 끝나요.</p>
+    <div class="warn-box">
+      <b>⚠ 카카오톡 안에서 설치하지 마세요</b>
+      <p>카톡에서 링크를 누르면 카톡 안의 브라우저로 열려서 <b>홈 화면 아이콘이 제대로 만들어지지 않을 수 있어요.</b> 설치는 <b>크롬</b>(아이폰은 <b>사파리</b>), 또는 <b>삼성 인터넷</b>에서 해 주세요.</p>
+      <p class="how">카톡에서 열었다면: 오른쪽 위 <b>⋮</b> 또는 아래 <b>공유</b> 버튼 → <b>다른 브라우저로 열기</b></p>
+      <a class="btn ghost kakao-only" id="open-external" href="#" hidden>지금 크롬·기본 브라우저로 열기</a>
+    </div>
     <div class="card">
       <ol class="steps">
         <li><div><b>라이선스 코드 받기</b><span>구매하시면 <code>PT-XXXX-XXXX</code> 형태의 코드를 보내드려요.</span></div></li>
@@ -242,6 +256,13 @@
     if (a.getAttribute('href').indexOf('__') === 0) { a.setAttribute('aria-disabled', 'true'); a.textContent = '앱 주소 준비 중'; }
   })();
 
+  // 카카오톡 안의 브라우저로 열었으면 바깥 브라우저로 여는 버튼을 보여줌
+  (function () {
+    if (!/KAKAOTALK/i.test(navigator.userAgent)) return;
+    var b = document.getElementById('open-external'); if (!b) return;
+    b.hidden = false;
+    b.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href.split('#')[0]);
+  })();
   // 원화 가격: 매달 1일에 바뀌는 환율로 계산 (전달 마지막 날 기준환율, 원 단위 올림)
   // 환율 출처: Frankfurter(유럽중앙은행 기준환율). 불러오지 못하면 위에 적힌 값을 그대로 보여줌
   (function () {
