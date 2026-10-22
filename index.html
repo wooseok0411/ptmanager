@@ -98,6 +98,19 @@
   .price ul.incl { list-style: none; padding: 0; margin: 12px auto 18px; display: grid; gap: 6px; max-width: 260px; text-align: left; }
   .price ul.incl li::before { content: "✓"; color: var(--accent); font-weight: 900; margin-right: 8px; }
   .price .btn { max-width: 420px; margin: 0 auto; }
+  .why { margin-bottom: 10px; padding: 18px; }
+  .why-hd { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: center; margin-bottom: 8px; }
+  .why-hd .num { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: var(--on-accent); font-weight: 900; font-size: 18px; display: grid; place-items: center; }
+  .why-hd small { display: block; color: var(--warm); font-weight: 700; font-size: 13px; }
+  .why-hd h3 { margin: 0; font-size: 19px; line-height: 1.35; letter-spacing: -.02em; }
+  .why ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .why li { padding: 10px 0 10px 22px; border-top: 1px solid var(--line); position: relative; color: var(--muted); font-size: 14px; }
+  .why li::before { content: "✓"; position: absolute; left: 0; top: 10px; color: var(--accent); font-weight: 900; }
+  .why li b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 1px; }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; background: var(--accent-soft); border-radius: 18px; padding: 14px 12px; margin-top: 4px; font-size: 14px; }
+  .flow span { background: var(--card); border-radius: 999px; padding: 4px 11px; }
+  .flow i { color: var(--muted); font-style: normal; }
+  .flow b { background: var(--accent); color: var(--on-accent); border-radius: 999px; padding: 4px 12px; }
   .contact { text-align: center; padding: 40px 0 28px; }
   .contact .card { padding: 22px 18px; }
   .contact .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
@@ -124,13 +137,50 @@
     <p class="lead">종이 상담지, 메모장, 카톡 복붙을 앱 하나로 정리했어요.</p>
     <div class="grid">
       <div class="card feat"><div class="ic">📝</div><div><b>사전 상담 설문 자동 등록</b><p>설문 링크만 보내면, 제출한 회원이 앱 목록에 바로 올라와요. 알림 메일도 와요.</p></div></div>
-      <div class="card feat"><div class="ic">⚠️</div><div><b>건강 확인이 필요한 회원 표시</b><p>질환·통증을 체크한 회원은 눈에 띄게 표시돼요. 면담 후 확인 완료로 정리해요.</p></div></div>
-      <div class="card feat"><div class="ic">🍚</div><div><b>칼로리·단백질 자동 계산</b><p>키·체중·활동량·목표로 권장 섭취 칼로리와 단백질 목표를 바로 보여줘요.</p></div></div>
       <div class="card feat"><div class="ic">🏋️</div><div><b>회차별 프로그램 + 추천 운동</b><p>부위를 고르면 대표 운동이 떠요. 눌러서 넣고, 자주 쓰는 운동은 직접 추가해요.</p></div></div>
       <div class="card feat"><div class="ic">📒</div><div><b>운동일지</b><p>다음 회차 프로그램이 자동으로 채워져요. 실제로 한 대로 고쳐서 저장하면 끝.</p></div></div>
       <div class="card feat"><div class="ic">💬</div><div><b>회원에게 카톡으로 보내기</b><p>처방 목표, 프로그램, 운동일지, 식단 가이드를 골라서 메시지로 바로 보내요.</p></div></div>
     </div>
     <div class="card feat trust" style="margin-top:10px"><div class="ic">🔒</div><div><b>회원 정보는 내 구글 계정에만</b><p>설문지와 회원 시트가 트레이너 본인 구글 계정에 만들어져요. 판매자는 회원 정보를 볼 수 없어요.</p></div></div>
+  </section>
+
+  <section id="why">
+    <h2>시간 절약을 넘어,<br>재등록되는 수업으로</h2>
+    <p class="lead">준비된 상담, 계획된 수업, 기록된 성장. 회원이 다시 등록하는 이유는 결국 수업의 질이에요.</p>
+
+    <article class="card why">
+      <div class="why-hd"><span class="num">1</span><div><small>사전 상담</small><h3>첫 수업 전에 회원을 먼저 알아요</h3></div></div>
+      <ul>
+        <li><b>회원별 맞춤 계획</b> 목표·운동 경험·생활 습관·통증 이력을 미리 보고, 그 회원에게 맞는 첫 계획을 세워요.</li>
+        <li><b>상담·OT 시간 절약</b> 기본 질문은 설문으로 끝내고, 대면 시간은 동작 평가와 목표 합의에 집중해요.</li>
+        <li><b>안전한 시작</b> 주의가 필요한 건강 상태를 첫 수업 전에 확인하고 강도를 조절해요.</li>
+        <li><b>좋은 첫인상</b> "나를 위해 준비했구나" 하는 첫 만남이 신뢰의 출발점이 돼요.</li>
+      </ul>
+    </article>
+
+    <article class="card why">
+      <div class="why-hd"><span class="num">2</span><div><small>회차별 운동 프로그램</small><h3>계획된 트레이너는 다릅니다</h3></div></div>
+      <ul>
+        <li><b>꽉 찬 수업</b> "다음엔 뭐 하지?" 하는 빈 시간 없이, 정해진 흐름대로 알차게 진행해요.</li>
+        <li><b>이어지는 목표</b> 회차마다 무엇을 왜 하는지 연결돼서, 회원이 변화의 방향을 이해해요.</li>
+        <li><b>준비된 모습</b> 다음 수업 프로그램을 카톡으로 미리 보내면, 회원은 준비된 트레이너라고 느껴요.</li>
+        <li><b>신뢰가 재등록으로</b> 계획이 보이는 수업은 믿음을 만들고, 믿음은 재등록으로 이어져요.</li>
+      </ul>
+    </article>
+
+    <article class="card why">
+      <div class="why-hd"><span class="num">3</span><div><small>운동일지</small><h3>기록이 쌓이면 성장이 보여요</h3></div></div>
+      <ul>
+        <li><b>정량화된 점진적 과부하</b> 무게·횟수·세트를 회차별로 남겨, 감이 아닌 숫자로 강도를 올려요.</li>
+        <li><b>혼자 운동할 때도</b> 그날 한 운동을 회원에게 보내 주면, 개인 운동 때 그대로 따라 할 수 있어요.</li>
+        <li><b>다음 계획의 근거</b> 지난 기록과 컨디션을 보고 다음 회차 프로그램을 근거 있게 조정해요.</li>
+        <li><b>재등록 상담 자료</b> "처음보다 이만큼 늘었어요"를 기록으로 보여주면 설득이 필요 없어요.</li>
+      </ul>
+    </article>
+
+    <div class="flow" aria-label="재등록으로 이어지는 흐름">
+      <span>사전 상담</span><i>→</i><span>맞춤 계획</span><i>→</i><span>기록된 성장</span><i>→</i><span>회원의 신뢰</span><i>→</i><b>재등록</b>
+    </div>
   </section>
 
   <section id="price">
