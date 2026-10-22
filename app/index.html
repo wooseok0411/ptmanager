@@ -66,11 +66,9 @@
     </ol>
   </div>
 
-  <a class="btn" id="open" href="#">지금 바로 앱 열기</a>
   <p class="note">홈 화면의 감자 아이콘을 누르면 이 화면을 건너뛰고 바로 앱이 열려요.</p>
 </main>
 <script>
-  document.getElementById('open').href = APP_URL;
   if (/[?&]from=install/.test(location.search)) document.getElementById('done').hidden = false;
   function chromeLink(url) {
     var ua = navigator.userAgent;
