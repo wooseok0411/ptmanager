@@ -134,10 +134,13 @@
   .trial > b { display: block; color: var(--accent); margin-bottom: 6px; }
   .trial .code-row { display: flex; gap: 8px; align-items: center; }
   .trial code { flex: 1; background: var(--card); border: 1px dashed var(--accent); border-radius: 12px; padding: 12px; font: 800 18px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .04em; white-space: nowrap; text-align: center; color: var(--ink); }
-  .trial .copy { border: 0; background: var(--accent); color: var(--on-accent); border-radius: 12px; padding: 0 16px; min-height: 46px; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .trial .copy { flex: none; white-space: nowrap; border: 0; background: var(--accent); color: var(--on-accent); border-radius: 12px; padding: 0 16px; min-height: 46px; font-weight: 700; font-size: 15px; cursor: pointer; }
   .trial p { margin: 10px 0 0; font-size: 14px; color: var(--ink); }
   .trial .btn { margin-top: 12px; max-width: none; }
   .trial .tnote { color: var(--muted); font-size: 13px; }
+  .mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mini div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; font-weight: 700; font-size: 14px; line-height: 1.35; display: flex; gap: 8px; align-items: center; }
+  .mini span { font-size: 20px; flex: none; }
   .contact { text-align: center; padding: 40px 0 28px; }
   .contact .card { padding: 22px 18px; }
   .contact .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
@@ -156,19 +159,18 @@
       <a class="btn primary" id="open-app" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
       <a class="btn ghost" href="#contact">구매 문의</a>
     </div>
-    <div class="small"><b style="color:var(--accent)">처음 1개월 무료</b> · 이후 월 <s class="sale-only" style="opacity:.6">$7</s> <b class="usd" style="color:var(--accent)">$4</b> (약 <span class="krw">5,422</span>원<span class="sale-only">, 올해 말까지 할인</span>) · <a href="#price" style="color:inherit">무료 체험 코드 받기</a></div>
+    <div class="small"><b style="color:var(--accent)">1개월 무료</b> · 이후 월 <s class="sale-only" style="opacity:.6">$7</s> <b class="usd" style="color:var(--accent)">$4</b></div>
   </header>
 
   <section>
     <h2>이런 일이 편해져요</h2>
     <p class="lead">종이 상담지, 메모장, 카톡 복붙을 앱 하나로 정리했어요.</p>
-    <div class="grid">
-      <div class="card feat"><div class="ic">📝</div><div><b>사전 상담 설문 자동 등록</b><p>설문 링크만 보내면, 제출한 회원이 앱 목록에 바로 올라와요. 알림 메일도 와요.</p></div></div>
-      <div class="card feat"><div class="ic">🏋️</div><div><b>회차별 프로그램 + 추천 운동</b><p>부위를 고르면 대표 운동이 떠요. 눌러서 넣고, 자주 쓰는 운동은 직접 추가해요.</p></div></div>
-      <div class="card feat"><div class="ic">📒</div><div><b>운동일지</b><p>다음 회차 프로그램이 자동으로 채워져요. 실제로 한 대로 고쳐서 저장하면 끝.</p></div></div>
-      <div class="card feat"><div class="ic">💬</div><div><b>회원에게 카톡으로 보내기</b><p>처방 목표, 프로그램, 운동일지, 식단 가이드를 골라서 메시지로 바로 보내요.</p></div></div>
+    <div class="mini">
+      <div><span>📝</span>사전 상담 설문 자동 등록</div>
+      <div><span>🏋️</span>회차별 프로그램 + 추천 운동</div>
+      <div><span>📒</span>운동일지 자동 채우기</div>
+      <div><span>💬</span>회원에게 카톡으로 보내기</div>
     </div>
-    <div class="card feat trust" style="margin-top:10px"><div class="ic">🔒</div><div><b>회원 정보는 내 구글 계정에만</b><p>설문지와 회원 시트가 트레이너 본인 구글 계정에 만들어져요. 판매자는 회원 정보를 볼 수 없어요.</p></div></div>
   </section>
 
   <section id="why">
@@ -210,7 +212,6 @@
 
   <section id="price">
     <h2>가격</h2>
-    <p class="lead">커피 한 잔 값으로 상담·기록 정리를 끝내요.</p>
     <div class="card price">
       <span class="pill">처음 1개월 무료 체험</span>
       <div class="sale-tag sale-only">🎉 2026년 12월 31일까지 할인</div>
@@ -230,6 +231,7 @@
         <p class="tnote">설치는 꼭 크롬에서 해 주세요. 회원 정보는 각자 본인 구글 계정에만 저장돼요.</p>
       </div>
     </div>
+    <div class="card feat trust" style="margin-top:10px;text-align:left"><div class="ic">🔒</div><div><b>회원 정보는 내 구글 계정에만</b><p>설문지와 회원 시트가 트레이너 본인 구글 계정에 만들어져요. 판매자는 회원 정보를 볼 수 없어요.</p></div></div>
   </section>
 
   <section id="install">
@@ -237,25 +239,20 @@
     <p class="lead">휴대폰만 있으면 5분이면 끝나요.</p>
     <div class="warn-box">
       <b>⚠ 설치는 꼭 크롬에서 해 주세요</b>
-      <p>카카오톡 안에서 열거나 삼성 인터넷에서 설치하면 <b>홈 화면 아이콘이 제대로 만들어지지 않을 수 있어요.</b> 링크를 <b>크롬</b>에서 열어 설치해 주세요.</p>
-      <p class="how">카톡에서 열었다면: 오른쪽 위 <b>⋮</b> → <b>다른 브라우저로 열기</b> → <b>크롬</b></p>
+      <p>카카오톡·삼성 인터넷에서는 홈 화면 아이콘이 제대로 안 만들어져요. 카톡이라면 <b>⋮ → 다른 브라우저로 열기 → 크롬</b>.</p>
       <a class="btn ghost kakao-only" id="open-external" href="#" hidden>지금 크롬으로 열기</a>
     </div>
     <div class="card">
       <ol class="steps">
-        <li><div><b>라이선스 코드 받기</b><span>무료 체험은 위 가격 칸의 <a href="#price" style="color:var(--accent);font-weight:700">무료 체험 신청하기</a>를 누르면 코드가 나와요. 구매하시면 <code>PT-XXXX-XXXX</code> 형태의 코드를 보내드려요.</span></div></li>
-        <li><div><b>위의 [앱 열기 · 설치하기] 누르기</b><span>구글 계정으로 로그인해요. 처음이라면 forms.google.com을 한 번 열어 두면 좋아요.</span></div></li>
-        <li><div><b>구글 권한 허용</b><span>"확인되지 않은 앱" 창이 뜨면 고급 → (안전하지 않음)으로 이동 → 허용을 눌러요.</span></div></li>
-        <li><div><b>코드·이름·센터 입력 후 [설치하기]</b><span>내 계정에 설문지와 회원 시트가 자동으로 만들어져요.</span></div></li>
-        <li><div><b>홈 화면에 추가</b><span><a href="app/" style="color:var(--accent);font-weight:700">바로가기 만들기 페이지</a>를 열어 홈 화면에 추가하면 감자 아이콘으로 저장돼요. 아이콘을 누르면 바로 앱이 열려요.</span></div></li>
+        <li><div><b>체험 코드 받기</b><span>가격 칸의 <a href="#price" style="color:var(--accent);font-weight:700">무료 체험 신청하기</a>를 눌러요. 구매하시면 <code>PT-XXXX-XXXX</code> 코드를 보내드려요.</span></div></li>
+        <li><div><b>크롬에서 앱 열고 설치</b><span>[앱 열기 · 설치하기] → 구글 로그인 → "확인되지 않은 앱" 창이 뜨면 고급 → 이동 → 허용 → 코드·이름·센터 입력 후 [설치하기].</span></div></li>
+        <li><div><b>홈 화면 아이콘 만들기</b><span>설치 완료 화면의 [📲 홈 화면에 앱 아이콘 만들기]를 눌러요. 나중에는 <a href="app/" style="color:var(--accent);font-weight:700">바로가기 만들기 페이지</a>에서도 할 수 있어요.</span></div></li>
       </ol>
     </div>
   </section>
 
   <section>
     <h2>자주 묻는 질문</h2>
-    <details class="faq"><summary>컴퓨터 없이 휴대폰만으로 되나요?</summary><p>네. 설치부터 회원 관리, 설문 문항 수정까지 모두 휴대폰에서 할 수 있어요.</p></details>
-    <details class="faq"><summary>비용은 얼마인가요?</summary><p>처음 1개월은 무료로 써볼 수 있고, 이후에는 월 <span class="usd">$4</span>(약 <span class="krw">5,422</span>원)예요.<span class="sale-only"> 정가는 월 $7이고, 2026년 12월 31일까지 할인된 가격이에요.</span> 원화 금액은 매월 1일 환율로 다시 계산돼요. 구글 계정은 무료 계정이면 충분해요.</p></details>
     <details class="faq"><summary>설문 문항을 바꿀 수 있나요?</summary><p>앱의 [설문] 탭에서 문항 제목·선택지를 고치거나 새 문항을 추가할 수 있어요. 계산에 쓰이는 기본 문항만 삭제가 막혀 있어요.</p></details>
     <details class="faq"><summary>기존 회원도 넣을 수 있나요?</summary><p>설문 링크로 기본 정보를 짧게 제출한 뒤, 앱에서 [수정하기]로 나머지를 채우면 돼요.</p></details>
   </section>
