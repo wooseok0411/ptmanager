@@ -131,6 +131,8 @@
   .trial[hidden] { display: none; }
   .btn[hidden] { display: none; }
   #trial-btn { width: 100%; }
+  .trial-wrap { margin-top: 12px; }
+  .trial-wrap .trial { max-width: none; margin-top: 0; }
   .trial > b { display: block; color: var(--accent); margin-bottom: 6px; }
   .trial .code-row { display: flex; gap: 8px; align-items: center; }
   .trial code { flex: 1; background: var(--card); border: 1px dashed var(--accent); border-radius: 12px; padding: 12px; font: 800 18px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .04em; white-space: nowrap; text-align: center; color: var(--ink); }
@@ -155,10 +157,6 @@
     <img src="character.png" alt="팔 근육을 뽐내는 감자 캐릭터" width="512" height="512">
     <h1>PT 매니저 <span>GYMvis</span></h1>
     <p>상담 설문부터 운동일지까지,<br>휴대폰 하나로 끝내요.</p>
-    <div class="cta">
-      <a class="btn primary" id="open-app" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
-      <a class="btn ghost" href="#contact">구매 문의</a>
-    </div>
     <div class="small"><b style="color:var(--accent)">1개월 무료</b> · 이후 월 <s class="sale-only" style="opacity:.6">$7</s> <b class="usd" style="color:var(--accent)">$4</b></div>
   </header>
 
@@ -222,14 +220,6 @@
         <li>회원 수 제한 없이 등록</li>
         <li>기능 업데이트 자동 반영</li>
       </ul>
-      <button class="btn primary" type="button" id="trial-btn" onclick="showTrial()">무료 체험 신청하기</button>
-      <div class="trial" id="trial" hidden>
-        <b>무료 체험 코드</b>
-        <div class="code-row"><code id="trial-code">GYMVIS-FREE</code><button type="button" class="copy" id="copy-btn" onclick="copyTrial()">복사</button></div>
-        <p>아래 <b>앱 열기 · 설치하기</b>를 눌러 설치 화면의 <b>라이선스 코드</b> 칸에 붙여넣으세요. 1개월 동안 모든 기능을 무료로 쓸 수 있어요.</p>
-        <a class="btn primary" id="trial-open" href="#" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
-        <p class="tnote">설치는 꼭 크롬에서 해 주세요. 회원 정보는 각자 본인 구글 계정에만 저장돼요.</p>
-      </div>
     </div>
     <div class="card feat trust" style="margin-top:10px;text-align:left"><div class="ic">🔒</div><div><b>회원 정보는 내 구글 계정에만</b><p>설문지와 회원 시트가 트레이너 본인 구글 계정에 만들어져요. 판매자는 회원 정보를 볼 수 없어요.</p></div></div>
   </section>
@@ -244,10 +234,20 @@
     </div>
     <div class="card">
       <ol class="steps">
-        <li><div><b>체험 코드 받기</b><span>가격 칸의 <a href="#price" style="color:var(--accent);font-weight:700">무료 체험 신청하기</a>를 눌러요. 구매하시면 <code>PT-XXXX-XXXX</code> 코드를 보내드려요.</span></div></li>
+        <li><div><b>체험 코드 받기</b><span>아래 <a href="#trial-btn" style="color:var(--accent);font-weight:700">무료 체험 신청하기</a>를 눌러요. 구매하시면 <code>PT-XXXX-XXXX</code> 코드를 보내드려요.</span></div></li>
         <li><div><b>크롬에서 앱 열고 설치</b><span>[앱 열기 · 설치하기] → 구글 로그인 → "확인되지 않은 앱" 창이 뜨면 고급 → 이동 → 허용 → 코드·이름·센터 입력 후 [설치하기].</span></div></li>
         <li><div><b>홈 화면 아이콘 만들기</b><span>설치 완료 화면의 [📲 홈 화면에 앱 아이콘 만들기]를 눌러요. 나중에는 <a href="app/" style="color:var(--accent);font-weight:700">바로가기 만들기 페이지</a>에서도 할 수 있어요.</span></div></li>
       </ol>
+    </div>
+    <div class="trial-wrap">
+        <button class="btn primary" type="button" id="trial-btn" onclick="showTrial()">무료 체험 신청하기</button>
+        <div class="trial" id="trial" hidden>
+          <b>무료 체험 코드</b>
+          <div class="code-row"><code id="trial-code">GYMVIS-FREE</code><button type="button" class="copy" id="copy-btn" onclick="copyTrial()">복사</button></div>
+          <p>아래 <b>앱 열기 · 설치하기</b>를 눌러 설치 화면의 <b>라이선스 코드</b> 칸에 붙여넣으세요. 1개월 동안 모든 기능을 무료로 쓸 수 있어요.</p>
+          <a class="btn primary" id="trial-open" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
+          <p class="tnote">설치는 꼭 크롬에서 해 주세요. 회원 정보는 각자 본인 구글 계정에만 저장돼요.</p>
+        </div>
     </div>
   </section>
 
@@ -272,17 +272,11 @@
 </main>
 <footer>PT 매니저 GYMvis · 체육 전공 트레이너가 직접 만들었어요<br><a href="privacy/" style="color:inherit">개인정보처리방침</a> · <a href="mailto:wooseok6133@gmail.com" style="color:inherit">wooseok6133@gmail.com</a></footer>
 <script>
-  // 앱 주소가 아직 비어 있으면 버튼을 잠시 막아둠
-  (function () {
-    var a = document.getElementById('open-app');
-    if (a.getAttribute('href').indexOf('__') === 0) { a.setAttribute('aria-disabled', 'true'); a.textContent = '앱 주소 준비 중'; }
-  })();
 
   // 무료 체험 코드 보여주기·복사
   function showTrial() {
     var t = document.getElementById('trial'); t.hidden = false;
     document.getElementById('trial-btn').hidden = true;
-    var app = document.getElementById('open-app'); document.getElementById('trial-open').href = app ? app.href : '#';
     t.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   function copyTrial() {
