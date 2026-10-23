@@ -131,6 +131,13 @@
   .trial[hidden] { display: none; }
   .btn[hidden] { display: none; }
   #trial-btn { width: 100%; }
+  .safe-box { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-top: 10px; font-size: 14px; }
+  .safe-box > b { display: block; font-size: 16px; color: var(--accent); margin-bottom: 4px; }
+  .safe-box p { margin: 4px 0; }
+  .safe-box ul { margin: 6px 0; padding-left: 18px; }
+  .safe-box li { margin: 3px 0; }
+  .safe-box a { color: var(--accent); font-weight: 700; }
+  .safe-box .how { color: var(--muted); font-size: 13px; margin-top: 8px; }
   .trial-wrap { margin-top: 12px; }
   .trial-wrap .trial { max-width: none; margin-top: 0; }
   .trial > b { display: block; color: var(--accent); margin-bottom: 6px; }
@@ -242,6 +249,17 @@
         <li><div><b>크롬에서 앱 열고 설치</b><span>[앱 열기 · 설치하기] → 구글 로그인 → "확인되지 않은 앱" 창이 뜨면 고급 → 이동 → 허용 → 코드·이름·센터 입력 후 [설치하기].</span></div></li>
         <li><div><b>홈 화면 아이콘 만들기</b><span>설치 완료 화면의 [📲 홈 화면에 앱 아이콘 만들기]를 눌러요. 나중에는 <a href="app/" style="color:var(--accent);font-weight:700">바로가기 만들기 페이지</a>에서도 할 수 있어요.</span></div></li>
       </ol>
+    </div>
+    <div class="safe-box">
+      <b>🛡️ "확인되지 않은 앱" 경고, 안심하셔도 돼요</b>
+      <p>이 경고는 앱이 위험하다는 뜻이 아니에요. 구글의 정식 앱 심사를 아직 마치지 않은 <b>개인 제작 앱이라면 똑같이 뜨는 안내</b>예요. 심사 준비가 끝나면 이 경고는 사라질 예정이에요.</p>
+      <ul>
+        <li>앱은 구글이 운영하는 <b>Google Apps Script</b> 위에서, 트레이너 본인 계정 권한으로만 실행돼요.</li>
+        <li>설치할 때 앱이 직접 만든 <b>설문지와 회원 시트만</b> 열어요. 드라이브의 다른 파일, 지메일, 연락처는 보지 않아요.</li>
+        <li>회원 정보는 내 구글 계정에만 저장되고, <b>판매자도 볼 수 없어요.</b></li>
+        <li>언제든 <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">구글 계정 → 타사 액세스</a>에서 권한을 바로 끊을 수 있어요.</li>
+      </ul>
+      <p class="how">넘어가는 방법: 경고 화면 왼쪽 아래 <b>고급</b> → <b>○○(으)로 이동(안전하지 않음)</b> → 권한 확인 후 <b>허용</b>. "안전하지 않음"도 심사 전 앱에 붙는 기본 문구예요. 자세한 내용은 <a href="privacy/">개인정보처리방침</a>에서 볼 수 있어요.</p>
     </div>
     <div class="trial-wrap">
         <button class="btn primary" type="button" id="trial-btn" onclick="showTrial()">무료 체험 신청하기</button>
