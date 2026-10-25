@@ -35,7 +35,7 @@
 <main class="wrap">
   <a class="back" href="../">← PT 매니저 GYMvis 소개로</a>
   <h1>개인정보처리방침</h1>
-  <div class="meta">PT 매니저 GYMvis · 시행일 2026년 10월 22일</div>
+  <div class="meta">PT 매니저 GYMvis · 시행일 2026년 10월 22일 · 최종 수정 2026년 10월 25일</div>
 
   <section>
     <h2>1. 이 방침이 다루는 범위</h2>
@@ -59,11 +59,9 @@
     <table>
       <tr><th>Google 설문지 (forms)</th><td>트레이너 계정에 사전 상담 설문지를 만들고, 트레이너가 앱에서 문항을 수정하며, 제출된 응답을 읽어 회원 목록에 보여줍니다.</td></tr>
       <tr><th>Google 시트 (spreadsheets)</th><td>트레이너 계정에 회원 시트를 만들고, 처방 목표·회차별 프로그램·운동일지·정보 수정 내용을 저장하고 읽습니다.</td></tr>
-      <tr><th>메일 보내기 (script.send_mail)</th><td>새 설문이 제출되면 트레이너가 지정한 주소로 알림 메일을 보냅니다. 다른 사람에게 메일을 보내지 않습니다.</td></tr>
-      <tr><th>트리거 관리 (script.scriptapp)</th><td>설문이 제출되면 자동으로 알림을 보내기 위한 제출 감지 기능을 트레이너 계정에 설정합니다.</td></tr>
-      <tr><th>이메일 주소 (userinfo.email)</th><td>트레이너 본인 확인, 라이선스 코드와 계정 연결, 알림 메일 기본 주소 설정에 사용합니다.</td></tr>
+      <tr><th>이메일 주소 (userinfo.email)</th><td>트레이너 본인 확인과 라이선스 코드·계정 연결에 사용합니다.</td></tr>
     </table>
-    <p>앱은 Google Drive의 다른 파일, Gmail 받은편지함, 연락처 등 위에 적지 않은 데이터에는 접근하지 않습니다.</p>
+    <p>앱은 Google Drive의 다른 파일, Gmail, 연락처 등 위에 적지 않은 데이터에는 접근하지 않으며, 메일을 보내지 않습니다. 새 설문 제출 알림은 트레이너가 Google 설문지의 기본 기능(새 응답 이메일 알림)을 직접 켜서 Google로부터 받습니다.</p>
   </section>
 
   <section>
@@ -71,7 +69,7 @@
     <h3>트레이너 Google 계정에 저장되는 것</h3>
     <ul>
       <li>사전 상담 설문지와 응답, 회원 시트(처방 목표, 회차별 프로그램, 운동일지, 정보 수정, 건강 확인, 회원 상태 탭)</li>
-      <li>앱 설정(트레이너 이름, 센터 이름, 알림 메일, 보관 기간)과 "내 운동" 목록 — Apps Script 사용자 속성</li>
+      <li>앱 설정(트레이너 이름, 센터 이름, 보관 기간)과 "내 운동" 목록 — Apps Script 사용자 속성</li>
     </ul>
     <p>이 데이터는 트레이너가 직접 관리하며, 트레이너가 Google 설문지·시트에서 언제든 수정하거나 삭제할 수 있습니다.</p>
     <h3>운영자가 보관하는 것</h3>
@@ -118,9 +116,9 @@
 
   <section class="en">
     <h2>Privacy Policy (English summary)</h2>
-    <p>PT Manager GYMvis is a Google Apps Script web app that helps personal trainers manage intake surveys, workout programs, and workout logs for their clients. Operator: Wooseok Sim, <a href="mailto:gymvis.manager@gmail.com">gymvis.manager@gmail.com</a>. Effective October 22, 2026.</p>
+    <p>PT Manager GYMvis is a Google Apps Script web app that helps personal trainers manage intake surveys, workout programs, and workout logs for their clients. Operator: Wooseok Sim, <a href="mailto:gymvis.manager@gmail.com">gymvis.manager@gmail.com</a>. Effective October 22, 2026; last updated October 25, 2026.</p>
     <ul>
-      <li><b>Data accessed:</b> Google Forms (create the trainer's intake form, edit its questions, read responses), Google Sheets (create and read/write the trainer's client sheet), send email (notify the trainer of new submissions at the trainer's chosen address), manage triggers (detect form submissions), and the user's email address (identify the trainer and bind the license code).</li>
+      <li><b>Data accessed:</b> Google Forms (create the trainer's intake form, edit its questions, read responses), Google Sheets (create and read/write the trainer's client sheet), and the user's email address (identify the trainer and bind the license code). The app does not send email; trainers receive new-response alerts through Google Forms' own email notification setting.</li>
       <li><b>Storage:</b> All client data and responses are stored only in the trainer's own Google account (Forms/Sheets). Settings are stored in Apps Script user properties. The operator runs no servers and does not receive or store client data. The operator stores only license codes and the email address of the account that used each code.</li>
       <li><b>Sharing:</b> We do not sell, transfer, or use Google user data for advertising or AI model training. Content is shared with clients only when the trainer explicitly chooses to send it via the device's share function.</li>
       <li><b>Limited Use:</b> PT Manager GYMvis's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
