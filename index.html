@@ -131,6 +131,15 @@
   .trial[hidden] { display: none; }
   .btn[hidden] { display: none; }
   #trial-btn { width: 100%; }
+  .pre { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.55); display: flex; align-items: flex-end; justify-content: center; padding: 16px; }
+  .pre[hidden] { display: none; }
+  .pre-card { background: var(--card); color: var(--ink); width: 100%; max-width: 440px; max-height: calc(100vh - 32px); overflow-y: auto; border-radius: 20px; padding: 18px 18px 14px; font-size: 14px; }
+  .pre-card > b { display: block; font-size: 18px; margin-bottom: 10px; }
+  .pre-card img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
+  .pre-card p { margin: 10px 0 6px; }
+  .pre-card ol { margin: 4px 0 6px; padding-left: 20px; }
+  .pre-card .btn { width: 100%; margin-top: 10px; }
+  @media (min-width: 600px) { .pre { align-items: center; } }
   .safe-box { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-top: 10px; font-size: 14px; }
   .safe-box > b { display: block; font-size: 16px; color: var(--accent); margin-bottom: 4px; }
   .safe-box p { margin: 4px 0; }
@@ -296,9 +305,36 @@
   </section>
 
 </main>
+<div class="pre" id="pre-warn" hidden role="dialog" aria-modal="true" aria-labelledby="pre-title">
+  <div class="pre-card">
+    <b id="pre-title">다음 화면에서 이런 안내가 떠요</b>
+    <img src="warn-screen.png" alt="Google에서 확인하지 않은 앱 안내 화면" width="1080" height="516">
+    <p>구글 정식 심사를 준비 중인 개인 제작 앱이라 뜨는 안내예요.<br>회원 정보는 내 구글 계정에만 저장되고, 판매자도 볼 수 없어요.</p>
+    <ol>
+      <li><b>계속</b>을 눌러요. (<b>고급</b>이 보이면 고급 → <b>이동</b>)</li>
+      <li>권한 확인 화면에서 <b>허용</b>을 눌러요.</li>
+    </ol>
+    <a class="btn primary" id="pre-go" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">알겠어요, 앱 열기</a>
+    <button type="button" class="btn ghost" id="pre-close">닫기</button>
+  </div>
+</div>
 <footer>PT 매니저 GYMvis · 체육 전공 트레이너가 직접 만들었어요<br><a href="privacy/" style="color:inherit">개인정보처리방침</a> · <a href="mailto:wooseok6133@gmail.com" style="color:inherit">wooseok6133@gmail.com</a></footer>
 <script>
 
+
+  // 앱 열기 전에 구글 경고 화면을 미리 알려주기
+  (function () {
+    var m = document.getElementById('pre-warn'); if (!m) return;
+    var close = function () { m.hidden = true; document.body.style.overflow = ''; };
+    ['open-app', 'trial-open'].forEach(function (id) {
+      var a = document.getElementById(id); if (!a) return;
+      a.addEventListener('click', function (e) { e.preventDefault(); m.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('pre-go').focus(); });
+    });
+    document.getElementById('pre-go').addEventListener('click', function () { setTimeout(close, 300); });
+    document.getElementById('pre-close').addEventListener('click', close);
+    m.addEventListener('click', function (e) { if (e.target === m) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) close(); });
+  })();
   // 무료 체험 코드 보여주기·복사
   function showTrial() {
     var t = document.getElementById('trial'); t.hidden = false;
