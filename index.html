@@ -81,6 +81,7 @@
   ol.steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-weight: 700; display: grid; place-items: center; }
   ol.steps b { display: block; }
   ol.steps span { color: var(--muted); font-size: 14px; }
+  ol.steps em.hl { font-style: normal; font-weight: 700; color: var(--ink); }
 
   details.faq { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 0 18px; margin-bottom: 8px; }
   details.faq summary { list-style: none; cursor: pointer; padding: 15px 0; font-weight: 700; display: flex; justify-content: space-between; gap: 10px; }
@@ -131,23 +132,6 @@
   .trial[hidden] { display: none; }
   .btn[hidden] { display: none; }
   #trial-btn { width: 100%; }
-  .pre { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.55); display: flex; align-items: flex-end; justify-content: center; padding: 16px; }
-  .pre[hidden] { display: none; }
-  .pre-card { background: var(--card); color: var(--ink); width: 100%; max-width: 440px; max-height: calc(100vh - 32px); overflow-y: auto; border-radius: 20px; padding: 18px 18px 14px; font-size: 14px; }
-  .pre-card > b { display: block; font-size: 18px; margin-bottom: 10px; }
-  .pre-card img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: #fff; }
-  .pre-card p { margin: 10px 0 6px; }
-  .pre-card ol { margin: 4px 0 6px; padding-left: 20px; }
-  .pre-card .btn { width: 100%; margin-top: 10px; }
-  @media (min-width: 600px) { .pre { align-items: center; } }
-  .safe-box { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin-top: 10px; font-size: 14px; }
-  .safe-box > b { display: block; font-size: 16px; color: var(--accent); margin-bottom: 4px; }
-  .safe-box p { margin: 4px 0; }
-  .safe-box ul { margin: 6px 0; padding-left: 18px; }
-  .safe-box li { margin: 3px 0; }
-  .safe-box a { color: var(--accent); font-weight: 700; }
-  .safe-box .warn-shot { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); margin: 8px 0; background: #fff; }
-  .safe-box .how { color: var(--muted); font-size: 13px; margin-top: 8px; }
   .demo { text-align: center; }
   .demo video { display: block; width: 100%; max-width: 340px; height: auto; margin: 6px auto 0; border-radius: 22px; background: #0e1f1b; box-shadow: 0 8px 28px rgba(0,0,0,.18); }
   .trial-wrap { margin-top: 12px; }
@@ -264,15 +248,9 @@
     <div class="card">
       <ol class="steps">
         <li><div><b>체험 코드 받기</b><span>아래 <a href="#trial-btn" style="color:var(--accent);font-weight:700">무료 체험 신청하기</a>를 눌러요. 구매하시면 <code>PT-XXXX-XXXX</code> 코드를 보내드려요.</span></div></li>
-        <li><div><b>크롬에서 앱 열고 설치</b><span>[앱 열기 · 설치하기] → 구글 로그인 → "확인되지 않은 앱" 창이 뜨면 고급 → 이동 → 허용 → 코드·이름·센터 입력 후 [설치하기].</span></div></li>
+        <li><div><b>크롬에서 앱 열고 설치</b><span>[앱 열기 · 설치하기] → 구글 로그인 → 권한 창에서 <em class="hl">모두 선택</em> 후 [허용] → 코드·이름·센터 입력 후 [설치하기].</span></div></li>
         <li><div><b>홈 화면 아이콘 만들기</b><span>설치 완료 화면의 [📲 홈 화면에 앱 아이콘 만들기]를 눌러요. 나중에는 <a href="app/" style="color:var(--accent);font-weight:700">바로가기 만들기 페이지</a>에서도 할 수 있어요.</span></div></li>
       </ol>
-    </div>
-    <div class="safe-box">
-      <b>🛡️ 이 경고가 떠도 안심하세요</b>
-      <img class="warn-shot" src="warn-screen.png" alt="Google에서 확인하지 않은 앱 경고 화면" width="1080" height="516" loading="lazy">
-      <p>구글 심사 전인 개인 앱에 공통으로 뜨는 안내예요.<br>회원 정보는 내 계정에만 저장, 판매자도 못 봐요.</p>
-      <p class="how"><b>계속</b>(또는 고급 → 이동)을 누른 뒤 <b>허용</b>하면 돼요.</p>
     </div>
     <div class="trial-wrap">
         <button class="btn primary" type="button" id="trial-btn" onclick="showTrial()">무료 체험 신청하기</button>
@@ -305,36 +283,10 @@
   </section>
 
 </main>
-<div class="pre" id="pre-warn" hidden role="dialog" aria-modal="true" aria-labelledby="pre-title">
-  <div class="pre-card">
-    <b id="pre-title">다음 화면에서 이런 안내가 떠요</b>
-    <img src="warn-screen.png" alt="Google에서 확인하지 않은 앱 안내 화면" width="1080" height="516">
-    <p>구글 정식 심사를 준비 중인 개인 제작 앱이라 뜨는 안내예요.<br>회원 정보는 내 구글 계정에만 저장되고, 판매자도 볼 수 없어요.</p>
-    <ol>
-      <li><b>계속</b>을 눌러요. (<b>고급</b>이 보이면 고급 → <b>이동</b>)</li>
-      <li>권한 확인 화면에서 <b>허용</b>을 눌러요.</li>
-    </ol>
-    <a class="btn primary" id="pre-go" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">알겠어요, 앱 열기</a>
-    <button type="button" class="btn ghost" id="pre-close">닫기</button>
-  </div>
-</div>
 <footer>PT 매니저 GYMvis · 체육 전공 트레이너가 직접 만들었어요<br><a href="privacy/" style="color:inherit">개인정보처리방침</a> · <a href="mailto:gymvis.manager@gmail.com" style="color:inherit">gymvis.manager@gmail.com</a></footer>
 <script>
 
 
-  // 앱 열기 전에 구글 경고 화면을 미리 알려주기
-  (function () {
-    var m = document.getElementById('pre-warn'); if (!m) return;
-    var close = function () { m.hidden = true; document.body.style.overflow = ''; };
-    ['open-app', 'trial-open'].forEach(function (id) {
-      var a = document.getElementById(id); if (!a) return;
-      a.addEventListener('click', function (e) { e.preventDefault(); m.hidden = false; document.body.style.overflow = 'hidden'; document.getElementById('pre-go').focus(); });
-    });
-    document.getElementById('pre-go').addEventListener('click', function () { setTimeout(close, 300); });
-    document.getElementById('pre-close').addEventListener('click', close);
-    m.addEventListener('click', function (e) { if (e.target === m) close(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) close(); });
-  })();
   // 무료 체험 코드 보여주기·복사
   function showTrial() {
     var t = document.getElementById('trial'); t.hidden = false;
