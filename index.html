@@ -94,11 +94,8 @@
   .price .pill { display: inline-block; background: var(--warm-soft); color: var(--warm); font-weight: 700; font-size: 14px; padding: 5px 14px; border-radius: 999px; }
   .price .amount { margin: 10px 0 6px; display: flex; align-items: baseline; justify-content: center; gap: 6px; }
   .price .amount s.was { font-size: 26px; color: var(--muted); font-weight: 700; margin-right: 4px; }
-  .price .sale-tag { display: inline-block; margin-top: 8px; background: #fdeaea; color: #b3261e; font-weight: 700; font-size: 14px; padding: 4px 12px; border-radius: 999px; }
   .price .amount b { font-size: 56px; line-height: 1; letter-spacing: -.03em; font-weight: 900; }
   .price .amount span { color: var(--muted); font-size: 18px; }
-  .price .krw-line { font-size: 17px; }
-  .price .krw-line .krw-note { color: var(--muted); font-size: 13px; }
   .price ul.incl { list-style: none; padding: 0; margin: 12px auto 18px; display: grid; gap: 6px; max-width: 260px; text-align: left; }
   .price ul.incl li::before { content: "✓"; color: var(--accent); font-weight: 900; margin-right: 8px; }
   .price .btn { max-width: 420px; margin: 0 auto; }
@@ -164,7 +161,7 @@
       <a class="btn primary" id="open-app" href="https://script.google.com/macros/s/AKfycbz6_AvuiL0MReZf_r-e7-JG7igIwDj8ah7q-YUJMOwK5XuxY921_Jp9ee8Tv3bswqM/exec" target="_blank" rel="noopener">앱 열기 · 설치하기</a>
       <a class="btn ghost" href="#contact">구매 문의</a>
     </div>
-    <div class="small"><b style="color:var(--accent)">1개월 무료</b> · 이후 월 <s class="sale-only" style="opacity:.6">$7</s> <b class="usd" style="color:var(--accent)">$4</b></div>
+    <div class="small"><b style="color:var(--accent)">1개월 무료</b> · 이후 월 <b style="color:var(--accent)">4,000원</b></div>
   </header>
 
   <section id="demo" class="demo">
@@ -225,9 +222,7 @@
     <h2>가격</h2>
     <div class="card price">
       <span class="pill">처음 1개월 무료 체험</span>
-      <div class="sale-tag sale-only">🎉 2026년 12월 31일까지 할인</div>
-      <div class="amount"><s class="was sale-only">$7</s><b class="usd">$4</b><span>/ 월</span></div>
-      <div class="krw-line">약 <b class="krw">5,422</b>원 <span class="krw-note">· <span class="krw-month">2026년 10월</span> 환율 기준</span></div>
+      <div class="amount"><b>4,000</b><span>원 / 월</span></div>
       <ul class="incl">
         <li>모든 기능 포함</li>
         <li>회원 수 제한 없이 등록</li>
@@ -317,40 +312,6 @@
     if (/KAKAOTALK/i.test(ua)) return 'kakaotalk://web/openExternal?url=' + encodeURIComponent(url);
     return url;
   }
-  // 원화 가격: 매달 1일에 바뀌는 환율로 계산 (전달 마지막 날 기준환율, 원 단위 올림)
-  // 환율 출처: Frankfurter(유럽중앙은행 기준환율). 불러오지 못하면 위에 적힌 값을 그대로 보여줌
-  (function () {
-    // 할인: 2026년 12월 31일(한국 시간)까지 월 $4, 2027년 1월 1일부터 정가 $7로 자동 전환
-    var SALE_END = Date.UTC(2026, 11, 31, 15, 0, 0);            // 2027-01-01 00:00 한국 시간
-    var onSale = Date.now() < SALE_END;
-    var USD = onSale ? 4 : 7;
-    if (!onSale) {
-      Array.prototype.forEach.call(document.querySelectorAll('.sale-only'), function (el) { el.style.display = 'none'; });
-      Array.prototype.forEach.call(document.querySelectorAll('.usd'), function (el) { el.textContent = '$7'; });
-    }
-    var now = new Date(Date.now() + 9 * 3600e3);              // 한국 시간
-    var y = now.getUTCFullYear(), m = now.getUTCMonth();         // m: 0~11
-    var ref = new Date(Date.UTC(y, m, 0));                       // 이번 달 1일의 전날 = 전달 마지막 날
-    var refStr = ref.toISOString().slice(0, 10);
-    var key = 'ptkit-krw-' + y + '-' + (m + 1);
-    function show(rate) {
-      var won = Math.ceil(USD * rate);
-      var txt = won.toLocaleString('ko-KR');
-      Array.prototype.forEach.call(document.querySelectorAll('.krw'), function (el) { el.textContent = txt; });
-      Array.prototype.forEach.call(document.querySelectorAll('.krw-month'), function (el) { el.textContent = y + '년 ' + (m + 1) + '월'; });
-    }
-    var cached = null;
-    try { cached = parseFloat(localStorage.getItem(key)); } catch (e) {}
-    if (cached > 0) { show(cached); return; }
-    fetch('https://api.frankfurter.dev/v1/' + refStr + '?from=USD&to=KRW')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var rate = d && d.rates && d.rates.KRW;
-        if (!(rate > 0)) return;
-        try { localStorage.setItem(key, String(rate)); } catch (e) {}
-        show(rate);
-      }).catch(function () {});
-  })();
 </script>
 </body>
 </html>
